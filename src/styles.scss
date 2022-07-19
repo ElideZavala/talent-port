@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html,
+body {
+    height: 100%;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
+// .fullWidth {
+//     width: 100%;
+// }
