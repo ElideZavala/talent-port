@@ -1,0 +1,33 @@
+
+mat-datepicker-content {
+  border-top-right-radius: 15px !important;
+  border-top-left-radius: 15px !important;
+}
+.mat-calendar-table-header-divider ::after {
+
+  position: absolute;
+  top: 0;
+  left: -8px;
+  right: -8px;
+  height: 0px !important;
+}
+
+.mat-calendar-table-header-divider {
+  position: static !important;
+  height: 1px !important;
+}
+
+.mat-calendar-content {
+  background: #F8F8F8;
+  padding: 0px 0px 0px 0px !important;
+}
+
+.mat-datepicker-actions{
+  justify-content: center !important;
+  align-items: center !important;
+
+}
+
+.mat-calendar-table-header {
+  background: #EBEBEB;
+}
