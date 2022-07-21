@@ -1,9 +1,16 @@
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DATE_FORMATS, MAT_NATIVE_DATE_FORMATS, MatDateFormats, DateAdapter } from '@angular/material/core';
 import { MatCalendar } from '@angular/material/datepicker';
+import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { RegisterInterface } from 'src/app/shared/interfaces/register.model';
+import { HttpErrorsService } from 'src/app/shared/services/http-errors.service';
+import { ValidationsRegexService } from 'src/app/shared/services/validations-regex.service';
+import { RegisterService } from '../services/register.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,25 +20,83 @@ export class RegisterComponent implements OnInit {
   startDate = new Date(1990, 0, 1);
   form!: FormGroup;
   exampleHeader = ExampleHeader;
-  constructor(private fb: FormBuilder) {
+  password: string = 'password';
+  confirmPassword: string = 'password';
+  dataForm!: RegisterInterface;
+  constructor(
+    private fb: FormBuilder,
+    private validationsRegexService: ValidationsRegexService,
+    private datePipe: DatePipe,
+    private registerService: RegisterService,
+    private httpErrorService: HttpErrorsService,
+    public dialog: MatDialog,) { }
 
-   }
-
+  today = new Date();
+  maxDateTo = this.today;
   ngOnInit(): void {
+    this.openDialogResult('Tu registro fue exitoso');
+    const regexOnly9TextandNumberSimbols = this.validationsRegexService.regexOnly9TextandNumberSimbols;
+    const regexPhoneNumber = this.validationsRegexService.regexPhoneNumber;
+    const regexEmail = this.validationsRegexService.regexEmail;
     this.form = this.fb.group({
-      // name: [{ value: '', disabled: this.option === 'new' ? false : true },  [Validators.required, Validators.maxLength(100)]],
-      // description: [''],
-      // url: ['', [Validators.required, Validators.pattern(regexUrl)]],
-      // contact: ['', [Validators.required, Validators.email]],
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(regexPhoneNumber)]],
+      email: ['', [Validators.required, Validators.pattern(regexEmail)]],
       birthday: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      password: ['', [Validators.required, Validators.pattern(regexOnly9TextandNumberSimbols)]],
+      confirmPassword: ['', [Validators.required, Validators.pattern(regexOnly9TextandNumberSimbols)]]
+    });
+
+    this.form.valueChanges.subscribe((val) => {
+      if (val.password !== val.confirmPassword){
+        this.form.controls['confirmPassword'].setErrors({incorrect: true});
+      }
     });
   }
+
+  changeView(input: string){
+    console.log(input);
+    this.password = input == 'password' ? this.password === 'password' ? 'text' : 'password' : 'password' ;
+    this.confirmPassword = input == 'confirmPassword' ? this.confirmPassword === 'password' ? 'text' : 'password' : 'password' ;
+  }
+
+  submit(){
+
+    this.dataForm = this.form.getRawValue();
+    console.log(this.form.get('birthday')!.value);
+    console.log(this.datePipe.transform(this.form.get('birthday')!.value, 'yyyy-MM-dd' )?.toString());
+    this.dataForm.birthday = this.datePipe.transform(this.form.get('birthday')!.value, 'yyyy-MM-dd')?.toString();
+    console.log(this.dataForm);
+    this.registerService.create(this.dataForm)
+    .subscribe({
+      next: async (res) => {
+        if (res.status === 201) {
+          console.log('mensaje exitoso');
+        }
+      },
+      error: err => this.httpErrorService.errorHttp(err)
+    });
+  }
+
+  openDialogResult(messageApi: string) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '350px',
+      data: {
+              title: '',
+              message: messageApi,
+              buttonYes: false,
+              buttonNo: false,
+              buttonOk: true
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      console.log('aca reporto a los nativos mobiles')
+    }
+    });
+}
 
 }
 

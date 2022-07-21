@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
@@ -16,5 +16,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     RegisterRoutingModule,
     SharedModule
   ],
+  providers: [DatePipe, { provide: LOCALE_ID, useValue: 'es-MX' }],
 })
 export class RegisterModule { }

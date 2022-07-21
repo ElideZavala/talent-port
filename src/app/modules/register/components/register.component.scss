@@ -1,5 +1,6 @@
 .formContainer{
-  margin: 0px 25px 25px 25px;
+  margin: 25px;
+
 }
 
 .button {
@@ -15,3 +16,27 @@
   border-radius: 0px;
 
 }
+
+.textPassword {
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 12px;
+color: #3B4559;
+margin-right: 15px;
+margin-left: 15px;
+
+}
+
+.mat-button{
+  cursor: default;
+  color: #fff !important;
+  border-radius: 10px;
+}
+
+
+.mat-button-disabled {
+  opacity: 0.5;
+}
+
