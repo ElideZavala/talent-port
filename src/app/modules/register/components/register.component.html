@@ -1,5 +1,5 @@
 <div fxFlex fxLayout="column" fxLayout.xs="column" fxLayoutGap.xs="0">
-  <div [formGroup]="form" fxLayout="column" class="formContainer"  >
+  <div [formGroup]="form" fxLayout="column" class="formContainer" fxFlexAlign="center"  >
     <mat-label *ngIf="form.controls['name'].touched">Nombre *</mat-label>
     <mat-form-field appearance="outline">
       <input matInput placeholder="Nombre *" formControlName="name" />
@@ -10,9 +10,10 @@
       <input matInput placeholder="Apellido *" formControlName="lastName" />
     </mat-form-field>
 
-    <mat-label *ngIf="form.controls['phone'].touched">Numero de Celular *</mat-label>
+    <mat-label >Numero de Celular *</mat-label>
     <mat-form-field appearance="outline">
-      <input matInput placeholder="Numero de Celular * +52" formControlName="phone" />
+      <input matInput placeholder="Numero de Celular *" formControlName="phone" />
+      <mat-hint>Ejemplo: +529999999999</mat-hint>
     </mat-form-field>
 
     <mat-label *ngIf="form.controls['email'].touched">Correo electrónico *</mat-label>
@@ -25,7 +26,7 @@
       <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento *" formControlName="birthday" [max]="maxDateTo" [disabled]="true">
       <mat-hint>DD/MM/YYYY</mat-hint>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker touchUi #picker disabled="false"  [calendarHeaderComponent]="exampleHeader">
+      <mat-datepicker touchUi #picker disabled="false"   startView="year">
         <mat-date-range-picker-actions>
           <button style="background: #774DA2; color:#fff;" mat-raised-button  matDateRangePickerApply>Aceptar</button>
         </mat-date-range-picker-actions>
@@ -34,7 +35,7 @@
 
     <mat-label *ngIf="form.controls['password'].touched">Contraseña *</mat-label>
     <mat-form-field appearance="outline">
-      <input matInput [type]="password" placeholder="Contraseña *" formControlName="password" maxlength="9" />
+      <input matInput [type]="password" placeholder="Contraseña *" formControlName="password" minlength="9" />
       <button matSuffix mat-icon-button (click)="changeView('password')">
         <mat-icon>visibility_off</mat-icon>
       </button>

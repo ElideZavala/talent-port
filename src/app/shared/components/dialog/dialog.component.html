@@ -1,4 +1,7 @@
-<h1 mat-dialog-title>{{ title }}</h1>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+<!-- <h1 mat-dialog-title>{{ title }}</h1> -->
 <mat-dialog-content>
     <!-- <div>{{ message }}</div> -->
     <div style="text-align: center; padding: 15px;">
@@ -9,7 +12,7 @@
     <div *ngIf="description">{{ description }}</div>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-    <button *ngIf="buttonNo" mat-button (click)="onNoClick()">No</button>
-    <button *ngIf="buttonYes" mat-button [mat-dialog-close]="true" cdkFocusInitial>Si</button>
-    <button *ngIf="buttonOk" mat-button [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
+    <button *ngIf="buttonNo" mat-button class="buttonAccept" (click)="onNoClick()">No</button>
+    <button *ngIf="buttonYes" mat-button class="buttonAccept" [mat-dialog-close]="true" cdkFocusInitial>Si</button>
+    <button *ngIf="buttonOk" mat-button class="buttonAccept" [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
 </mat-dialog-actions>

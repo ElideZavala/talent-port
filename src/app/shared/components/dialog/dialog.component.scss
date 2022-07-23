@@ -7,6 +7,7 @@
     //     padding: 5px;
     // }
 
+
     p {
       font-family: 'Inter';
       font-style: normal;
@@ -16,17 +17,36 @@
       text-align: center;
     }
 
-    button {
+    .buttonAccept {
       background: #774DA3;
       color: #fff;
       font-family: 'Inter';
       font-style: normal;
       font-weight: 700;
-      // font-size: 14px;
-      // line-height: 17px;
-      // height: 46px;
-      // width: 100%;
-      // border-radius: 0px;
+      width: 112px;
+    }
 
+    .close-button{
+      float: right;
+      top:-24px;
+      right:-24px;
+    }
+
+    .close-icon {
+      transition: 1s ease-in-out;
+    }
+
+    .close-icon:hover {
+      transform: rotate(180deg);
+    }
+
+    ::ng-deep .icon-outside .close-button{
+      float: right;
+      top:-52px;
+      right:-52px;
+    }
+
+    ::ng-deep .icon-outside .mat-dialog-container {
+     overflow: unset
     }
 }

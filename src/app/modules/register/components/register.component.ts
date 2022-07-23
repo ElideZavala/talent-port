@@ -41,11 +41,11 @@ export class RegisterComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       lastName: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(regexPhoneNumber)]],
+      phone: ['+52', [Validators.required, Validators.pattern(regexPhoneNumber)]],
       email: ['', [Validators.required, Validators.pattern(regexEmail)]],
       birthday: ['', Validators.required],
-      password: ['', [Validators.required, Validators.pattern(regexOnly9TextandNumberSimbols)]],
-      confirmPassword: ['', [Validators.required, Validators.pattern(regexOnly9TextandNumberSimbols)]]
+      password: ['', [Validators.required, Validators.pattern(regexOnly9TextandNumberSimbols), Validators.min(9)]],
+      confirmPassword: ['', [Validators.required, Validators.pattern(regexOnly9TextandNumberSimbols), Validators.min(9)]]
     });
 
     this.form.valueChanges.subscribe((val) => {
@@ -131,7 +131,7 @@ export class RegisterComponent implements OnInit {
       <button mat-icon-button (click)="previousClicked('month')">
         <mat-icon>keyboard_arrow_left</mat-icon>
       </button>
-      <span class="example-header-label">{{periodLabel}}</span>
+      <span class="example-header-label" (click)="currentPeriodClicked()">{{periodLabel}}</span>
       <button mat-icon-button (click)="nextClicked('month')">
         <mat-icon>keyboard_arrow_right</mat-icon>
       </button>
@@ -179,5 +179,11 @@ export class ExampleHeader<D> implements OnDestroy {
       mode === 'month'
         ? this._dateAdapter.addCalendarMonths(this._calendar.activeDate, 1)
         : this._dateAdapter.addCalendarYears(this._calendar.activeDate, 1);
+  }
+
+  currentPeriodClicked(){
+    console.log('abri el calendar');
+
+    this._calendar.currentView = this._calendar.currentView == 'month' ? 'multi-year' : 'month';
   }
 }
