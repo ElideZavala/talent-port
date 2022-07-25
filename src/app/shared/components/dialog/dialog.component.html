@@ -1,0 +1,21 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon">close</mat-icon>
+</button>
+<!-- <h1 mat-dialog-title>{{ title }}</h1> -->
+<mat-dialog-content>
+    <!-- <div>{{ message }}</div> -->
+    <div *ngIf="image" style="text-align: center; padding: 25px;">
+      <img [src]="image" alt="">
+    </div>
+
+    <p *ngIf="message" style="padding: 5px;">{{ message }}</p>
+    <div *ngIf="description">{{ description }}</div>
+    <div *ngIf="errorMessage1" class="errorMessage1" >{{ errorMessage1 }}</div>
+    <div *ngIf="errorMessage2" class="errorMessage2">{{ errorMessage2 }}</div>
+</mat-dialog-content>
+<mat-dialog-actions align="center" style="padding: 5px;">
+    <button *ngIf="buttonNo" mat-button class="buttonAccept" (click)="onNoClick()">No</button>
+    <button *ngIf="buttonYes" mat-button class="buttonAccept" [mat-dialog-close]="true" cdkFocusInitial>Si</button>
+    <button *ngIf="buttonOk" mat-button class="buttonAccept" [mat-dialog-close]="true" cdkFocusInitial>Aceptar</button>
+    <button *ngIf="buttonBack" mat-button class="buttonBack" [mat-dialog-close]="true" >Volver</button>
+</mat-dialog-actions>

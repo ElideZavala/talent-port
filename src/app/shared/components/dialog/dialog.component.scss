@@ -1,0 +1,83 @@
+:host {
+    // div {
+    //     user-select: none;
+    //     font-size: 14px;
+    //     color: black;
+    //     font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif;
+    //     padding: 5px;
+    // }
+
+
+    p {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+    }
+
+    .buttonAccept {
+      background: #774DA3;
+      color: #fff;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      width: 112px;
+    }
+
+    .buttonBack {
+      width: 112px;
+      background: #FFFFFF;
+      border: 1px solid #774DA2;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      color: #774DA2;
+    }
+
+    .close-button{
+      float: right;
+      top:-24px;
+      right:-24px;
+    }
+
+    .close-icon {
+      transition: 1s ease-in-out;
+    }
+
+    .close-icon:hover {
+      transform: rotate(180deg);
+    }
+
+    ::ng-deep .icon-outside .close-button{
+      float: right;
+      top:-52px;
+      right:-52px;
+    }
+
+    ::ng-deep .icon-outside .mat-dialog-container {
+     overflow: unset
+    }
+
+    .errorMessage1 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      text-align: center;
+      color: #774DA2;
+    }
+
+    .errorMessage2 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+      color: #3B4559;
+      margin-top: 10px;
+    }
+}

@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
-
+@import 'datepicker';
 html,
 body {
     height: 100%;
@@ -13,6 +13,8 @@ body {
     padding: 0;
 }
 
-// .fullWidth {
-//     width: 100%;
-// }
+.mat-dialog-content {
+  display: contents !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
