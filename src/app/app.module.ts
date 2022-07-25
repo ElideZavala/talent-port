@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es-MX';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { HttpRequestInterceptor } from './shared/HttpRequestInterceptor';
 registerLocaleData(localeEs, 'es-MX');
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ registerLocaleData(localeEs, 'es-MX');
     SharedModule,
     HttpClientModule
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-Mx' }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: 'es-Mx' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

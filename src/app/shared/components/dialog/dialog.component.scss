@@ -26,6 +26,16 @@
       width: 112px;
     }
 
+    .buttonBack {
+      width: 112px;
+      background: #FFFFFF;
+      border: 1px solid #774DA2;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      color: #774DA2;
+    }
+
     .close-button{
       float: right;
       top:-24px;
@@ -48,5 +58,26 @@
 
     ::ng-deep .icon-outside .mat-dialog-container {
      overflow: unset
+    }
+
+    .errorMessage1 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+      line-height: 16px;
+      text-align: center;
+      color: #774DA2;
+    }
+
+    .errorMessage2 {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      text-align: center;
+      color: #3B4559;
+      margin-top: 10px;
     }
 }

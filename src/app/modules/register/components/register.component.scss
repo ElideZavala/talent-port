@@ -2,12 +2,10 @@
 @font-face {
   font-family: 'Inter';
   font-style: normal;
-  // font-weight: 400;
   src: url('https://rsms.me/inter/inter.css');
 }
 .formContainer{
   margin: 25px;
-  max-width: 400px;
 }
 
 .button {
@@ -28,12 +26,12 @@
   font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
-font-size: 12px;
+font-size: 10px;
 line-height: 12px;
 color: #3B4559;
 margin-right: 15px;
 margin-left: 15px;
-
+margin-bottom: 25px;
 }
 
 .mat-button{
@@ -49,10 +47,11 @@ margin-left: 15px;
 
 input  {
   font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+color: #777777;
 }
 
 

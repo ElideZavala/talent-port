@@ -10,9 +10,9 @@
       <input matInput placeholder="Apellido *" formControlName="lastName" />
     </mat-form-field>
 
-    <mat-label >Numero de Celular *</mat-label>
+    <mat-label >Número de celular *</mat-label>
     <mat-form-field appearance="outline">
-      <input matInput placeholder="Numero de Celular *" formControlName="phone" />
+      <input matInput placeholder="Número de celular *" formControlName="phone" />
       <mat-hint>Ejemplo: +529999999999</mat-hint>
     </mat-form-field>
 
@@ -21,7 +21,7 @@
       <input matInput placeholder="Correo electrónico *" formControlName="email" />
     </mat-form-field>
 
-    <mat-label *ngIf="form.controls['birthday'].touched && form.controls['birthday'].valid">Fecha de Nacimiento *</mat-label>
+    <mat-label *ngIf="form.controls['birthday'].touched && form.controls['birthday'].valid">Fecha de nacimiento *</mat-label>
     <mat-form-field class="example-full-width" appearance="outline">
       <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento *" formControlName="birthday" [max]="maxDateTo" [disabled]="true">
       <mat-hint>DD/MM/YYYY</mat-hint>
@@ -35,7 +35,7 @@
 
     <mat-label *ngIf="form.controls['password'].touched">Contraseña *</mat-label>
     <mat-form-field appearance="outline">
-      <input matInput [type]="password" placeholder="Contraseña *" formControlName="password" minlength="9" />
+      <input matInput [type]="password" placeholder="Contraseña *" formControlName="password" minlength="9" style="-webkit-text-security: square;"/>
       <button matSuffix mat-icon-button (click)="changeView('password')">
         <mat-icon>visibility_off</mat-icon>
       </button>
@@ -43,7 +43,7 @@
 
     <mat-label *ngIf="form.controls['confirmPassword'].touched">Confirma la contraseña *</mat-label>
     <mat-form-field appearance="outline">
-      <input matInput [type]="confirmPassword" placeholder="Confirma la contraseña *" formControlName="confirmPassword" maxlength="9"/>
+      <input matInput [type]="confirmPassword" placeholder="Confirma la contraseña *" formControlName="confirmPassword" minlength="9"/>
       <button matSuffix mat-icon-button (click)="changeView('confirmPassword')">
         <mat-icon>visibility_off</mat-icon>
       </button>

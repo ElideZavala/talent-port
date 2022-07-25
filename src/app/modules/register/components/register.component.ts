@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
   today = new Date();
   maxDateTo = this.today;
   ngOnInit(): void {
-    this.openDialogResult('Tu registro fue exitoso');
     const regexOnly9TextandNumberSimbols = this.validationsRegexService.regexOnly9TextandNumberSimbols;
     const regexPhoneNumber = this.validationsRegexService.regexPhoneNumber;
     const regexEmail = this.validationsRegexService.regexEmail;
@@ -56,7 +55,6 @@ export class RegisterComponent implements OnInit {
   }
 
   changeView(input: string){
-    console.log(input);
     this.password = input == 'password' ? this.password === 'password' ? 'text' : 'password' : 'password' ;
     this.confirmPassword = input == 'confirmPassword' ? this.confirmPassword === 'password' ? 'text' : 'password' : 'password' ;
   }
@@ -64,30 +62,37 @@ export class RegisterComponent implements OnInit {
   submit(){
 
     this.dataForm = this.form.getRawValue();
-    console.log(this.form.get('birthday')!.value);
-    console.log(this.datePipe.transform(this.form.get('birthday')!.value, 'yyyy-MM-dd' )?.toString());
+    // console.log(this.form.get('birthday')!.value);
+    // console.log(this.datePipe.transform(this.form.get('birthday')!.value, 'yyyy-MM-dd' )?.toString());
     this.dataForm.birthday = this.datePipe.transform(this.form.get('birthday')!.value, 'yyyy-MM-dd')?.toString();
-    console.log(this.dataForm);
+    // console.log(this.dataForm);
     this.registerService.create(this.dataForm)
     .subscribe({
       next: async (res) => {
         if (res.status === 201) {
           console.log('mensaje exitoso');
+          this.openDialogResult('Tu registro fue exitoso', 'checkmark-circle-outline.png', true );
+        }
+        if(res.status === 403) {
+          this.openDialogResult('', 'icon-error.png',true, false, 'La dirección de correo electrónico ya ha sido registrada previamente en TalentPor',
+    'Recupera la contraseña para poder realizar el registro');
         }
       },
       error: err => this.httpErrorService.errorHttp(err)
     });
   }
 
-  openDialogResult(messageApi: string) {
+  openDialogResult(messageApi: string, image: string, buttonOk?: boolean, buttonBack?:  boolean,  errorMessage1?: string, errorMessage2?: string) {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '350px',
       data: {
               title: '',
               message: messageApi,
-              buttonYes: false,
-              buttonNo: false,
-              buttonOk: true
+              image,
+              errorMessage1,
+              errorMessage2,
+              buttonOk,
+              buttonBack
       }
     });
 
