@@ -13,7 +13,10 @@ import { DialogComponent } from './components/dialog/dialog.component';
   imports: [
     CommonModule,
     MaterialModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   exports: [
     MaterialModule,

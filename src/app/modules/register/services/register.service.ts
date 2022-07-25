@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class RegisterService {
 
-  private apiUrl: string = environment.apiUrl;
+  private apiUrl: string = environment.API;
   constructor(private http: HttpClient) { }
 
   create(data: object): Observable<HttpResponse<any>> {
