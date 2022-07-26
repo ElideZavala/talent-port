@@ -1,8 +1,12 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'ngx-lottie/lib/symbols';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { SliderInterface } from 'src/app/shared/interfaces/slider.model';
+import { HttpErrorsService } from 'src/app/shared/services/http-errors.service';
 import { SliderService } from '../../services/slider.service';
 
 
@@ -14,48 +18,15 @@ import { SliderService } from '../../services/slider.service';
 export class SliderComponent implements OnInit {
   @HostBinding('class') componentCssClass: any;
   showBtnNext: boolean = false;
-
-  modDark: boolean = true;
-  btn1 = new FormControl();
-  btn2 = new FormControl();
-  AndroidFunction: any;
-
   options: AnimationOptions[] = [];
-
-  data: any = [
-    {
-      targetNumber: 1,
-      image: "babyjason.json",
-      title: "¿Sabías que ...?",
-      paragraph1: "",
-      paragraph2: "Todos nacemos con 35 talentos y los utilizamos en nuestro día a día",
-      type: 1,
-      uri: "../assets/images/"
-    },
-    {
-      targetNumber: 2,
-      image: "work.json",
-      title: "¿Te gustaría ...?",
-      paragraph1: "- Mejorar profesionalmente\n- Encontrar el trabajo ideal para ti\n- Ser emprendedor\n- Saber que estudiar",
-      paragraph2: "Te ayudaremos a que esto sea posible conociendo tus talentos y conocer como se tienen que aplicar en tu día a día.",
-      type: 1,
-      uri: "../assets/images/"
-    },
-    {
-      targetNumber: 3,
-      image: "marketing.json",
-      title: "Te ayudaremos a",
-      paragraph1: "Conocer tus talentos dominantes y como poder aplicarlos para que logres:\n1. Establecer relaciones concretas con otras personas\n2. Resolver problemas\n3. Conocer que te motiva\n4. Saber que te hace resaltar de los demás",
-      paragraph2: "",
-      type: 1,
-      uri: "../assets/images/"
-    },
-  ];
+  dataSlider!: SliderInterface[];
 
   showPoints: boolean = true;
   constructor(
-    private servicio: SliderService,
+    private sliderService: SliderService,
     public overlayContainer: OverlayContainer,
+    private dialog: MatDialog,
+    private httpErrorService: HttpErrorsService,
   ) {
 
   }
@@ -64,20 +35,55 @@ export class SliderComponent implements OnInit {
     this.getInfoSlider();
   }
 
-
-
-
   animationCreated(animationItem: AnimationItem): void {
-
-    console.log(animationItem);
   }
 
   getInfoSlider(): void {
+    this.sliderService.getSlider()
+      .subscribe({
+        next: async (res) => {
+          if (res.status === 201) {
 
+          }
+          if (res.status === 403) {
+            // 
+          }
+        },
+        error: err => this.httpErrorService.errorHttp(err)
+      });
 
+    this.dataSlider = [
+      {
+        targetNumber: 1,
+        image: "babyjason.json",
+        title: "¿Sabías que ...?",
+        paragraph1: "",
+        paragraph2: "Todos nacemos con 35 talentos y los utilizamos en nuestro día a día",
+        type: 1,
+        uri: "../assets/images/"
+      },
+      {
+        targetNumber: 2,
+        image: "work.json",
+        title: "¿Te gustaría ...?",
+        paragraph1: "- Mejorar profesionalmente\n- Encontrar el trabajo ideal para ti\n- Ser emprendedor\n- Saber que estudiar",
+        paragraph2: "Te ayudaremos a que esto sea posible conociendo tus talentos y conocer como se tienen que aplicar en tu día a día.",
+        type: 1,
+        uri: "../assets/images/"
+      },
+      {
+        targetNumber: 3,
+        image: "marketing.json",
+        title: "Te ayudaremos a",
+        paragraph1: "Conocer tus talentos dominantes y como poder aplicarlos para que logres:\n1. Establecer relaciones concretas con otras personas\n2. Resolver problemas\n3. Conocer que te motiva\n4. Saber que te hace resaltar de los demás",
+        paragraph2: "",
+        type: 1,
+        uri: "../assets/images/"
+      },
+    ];
 
-    console.log(this.data);
-    this.data.forEach((element: any) => {
+    console.log(this.dataSlider);
+    this.dataSlider.forEach((element: any) => {
       element.paragraph1 = element.paragraph1.split("\n").join("<br />");
       element.paragraph2 = element.paragraph2.split("\n").join("<br />");
       this.options.push({
@@ -88,34 +94,36 @@ export class SliderComponent implements OnInit {
 
     console.log(this.options)
 
+  }
 
-    this.servicio.PostRequest('register', 'APISTALENTPOR', {
-    }).subscribe((response: any) => {
-      if (response.Message == true) {
-
+  openDialogResult(messageApi: string, image: string, buttonOk?: boolean, buttonBack?: boolean, errorMessage1?: string, errorMessage2?: string) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '350px',
+      data: {
+        title: '',
+        message: messageApi,
+        image,
+        errorMessage1,
+        errorMessage2,
+        buttonOk,
+        buttonBack
       }
-      else {
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('aca reporto a los nativos mobiles')
       }
-    }, (error) => {
-
     });
   }
+
   hidePoints(opc: number): void {
-    switch (opc) {
-      case 1:
-        break;
-      case 2:
-        break;
-      case this.data.length:
-        setTimeout(() => {
-          this.showPoints = false;
-          this.showBtnNext = true;
-        }, 100)
-        break;
+    if (this.dataSlider.length == opc) {
+      setTimeout(() => {
+        this.showPoints = false;
+        this.showBtnNext = true;
+      }, 100)
     }
-
-
   }
   emitFinishToMobile(): void {
     console.log('El Carrusel a terminado');

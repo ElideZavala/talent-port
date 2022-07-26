@@ -2,7 +2,7 @@
     <div class="slide" fxLayout="column" fxLayoutAlign="center center">
         <div class="slide-inner" fxLayout="column" fxLayoutAlign="center center">
 
-            <div *ngFor="let item of data.slice().reverse(); let i = index" fxLayout="column"
+            <div *ngFor="let item of dataSlider.slice().reverse(); let i = index" fxLayout="column"
                 fxLayoutAlign="center center">
 
                 <div  fxLayout="column" fxLayoutAlign="center center">
@@ -39,7 +39,7 @@
 
             <ol class="slide-indicador" *ngIf="showPoints" fxLayout="row" fxLayoutAlign="center center">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <li *ngFor="let item of data; let i = index" fxLayout="row" fxLayoutAlign="center center">
+                    <li *ngFor="let item of dataSlider; let i = index" fxLayout="row" fxLayoutAlign="center center">
                         <label for="slide-{{item.targetNumber}}" (click)="hidePoints(item.targetNumber)"
                             class="slide-circulo" fxLayout="row" fxLayoutAlign="center center">•</label>
                     </li>
