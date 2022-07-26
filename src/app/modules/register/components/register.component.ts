@@ -101,7 +101,7 @@ export class RegisterComponent implements OnInit {
       console.log('aca reporto a los nativos mobiles')
     }
     });
-}
+  }
 
 }
 

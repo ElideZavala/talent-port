@@ -1,0 +1,49 @@
+@import url('https://rsms.me/inter/inter.css');
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  src: url('https://rsms.me/inter/inter.css');
+}
+
+:host {
+  width: 100%;
+}
+.formContainer{
+  margin: 25px;
+}
+
+.button {
+  background: #774DA2;
+  color: #fff;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  height: 46px;
+  width: 100%;
+  border-radius: 0px;
+
+}
+
+.mat-button{
+  cursor: default;
+  color: #fff !important;
+  border-radius: 10px;
+}
+
+
+.mat-button-disabled {
+  opacity: 0.5;
+}
+
+input  {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #777777;
+}
+
+

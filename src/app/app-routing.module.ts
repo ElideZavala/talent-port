@@ -4,8 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'register',
+    redirectTo: 'home-frontend',
     pathMatch: 'full',
+  },
+  {
+    path: 'home-frontend',
+    loadChildren: () =>
+      import('./modules/home-fronted/home-fronted.module').then((m) => m.HomeFrontedModule),
   },
   {
     path: 'register',
@@ -21,6 +26,11 @@ const routes: Routes = [
     path: 'slider',
     loadChildren: () =>
       import('./modules/slider/slider.module').then((m) => m.SliderModule),
+  },
+  {
+    path: 'perfil',
+    loadChildren: () =>
+      import('./modules/perfil/perfil.module').then((m) => m.PerfilModule),
   },
 ];
 
