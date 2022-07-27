@@ -122,10 +122,12 @@ export class SliderComponent implements OnInit {
       setTimeout(() => {
         this.showPoints = false;
         this.showBtnNext = true;
+        this.emitFinishToMobile();
+
       }, 100)
     }
   }
   emitFinishToMobile(): void {
-    console.log('El Carrusel a terminado');
+    console.log('Fin carrusel');
   }
 }
