@@ -81,7 +81,7 @@ export class SliderComponent implements OnInit {
         uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
     ];
-    // ../assets/images/
+
     console.log(this.dataSlider);
     this.dataSlider.forEach((element: any) => {
       element.paragraph1 = element.paragraph1.split("\n").join("<br />");
@@ -93,7 +93,7 @@ export class SliderComponent implements OnInit {
     this.options.reverse();
 
     console.log(this.options)
-
+    //TEST 2
   }
 
   openDialogResult(messageApi: string, image: string, buttonOk?: boolean, buttonBack?: boolean, errorMessage1?: string, errorMessage2?: string) {
