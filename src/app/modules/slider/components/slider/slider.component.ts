@@ -93,7 +93,7 @@ export class SliderComponent implements OnInit {
     this.options.reverse();
 
     console.log(this.options)
-
+    //TEST
   }
 
   openDialogResult(messageApi: string, image: string, buttonOk?: boolean, buttonBack?: boolean, errorMessage1?: string, errorMessage2?: string) {
