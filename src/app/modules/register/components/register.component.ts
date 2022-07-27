@@ -34,6 +34,13 @@ export class RegisterComponent implements OnInit {
   today = new Date();
   maxDateTo = this.today;
   ngOnInit(): void {
+    const consoleLog = {
+      status: true,
+      status2: false,
+      text: 'text'
+    }
+    console.log(consoleLog);
+    console.log('ya se completo el registro')
     const regexOnly9TextandNumberSimbols = this.validationsRegexService.regexOnly9TextandNumberSimbols;
     const regexPhoneNumber = this.validationsRegexService.regexPhoneNumber;
     const regexEmail = this.validationsRegexService.regexEmail;
