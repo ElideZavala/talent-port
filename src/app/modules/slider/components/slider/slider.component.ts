@@ -48,7 +48,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
     let position = 0;
 
     mySwiper.on('slideChange', function () {
-      console.log(mySwiper.realIndex);
       if (mySwiper.realIndex == (length - 1)) {
         console.log('Fin carrusel');
         position = mySwiper.realIndex;
@@ -59,7 +58,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
     mySwiper.on('tap', function () {
       setTimeout(() => {
         let index = localStorage.getItem('index');
-        console.log(index);
         mySwiper.slideTo(Number(index), 500);
       }, 500)
     });
