@@ -2,7 +2,7 @@
     <div class="slide" fxLayout="column" fxLayoutAlign="center center">
         <div class="slide-inner" fxLayout="column" fxLayoutAlign="center center">
 
-            <div *ngFor="let item of data.slice().reverse(); let i = index" fxLayout="column"
+            <div *ngFor="let item of dataSlider.slice().reverse(); let i = index" fxLayout="column"
                 fxLayoutAlign="center center">
 
                 <div  fxLayout="column" fxLayoutAlign="center center">
@@ -39,17 +39,12 @@
 
             <ol class="slide-indicador" *ngIf="showPoints" fxLayout="row" fxLayoutAlign="center center">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <li *ngFor="let item of data; let i = index" fxLayout="row" fxLayoutAlign="center center">
+                    <li *ngFor="let item of dataSlider; let i = index" fxLayout="row" fxLayoutAlign="center center">
                         <label for="slide-{{item.targetNumber}}" (click)="hidePoints(item.targetNumber)"
                             class="slide-circulo" fxLayout="row" fxLayoutAlign="center center">•</label>
                     </li>
                 </div>
             </ol>
         </div>
-    </div>
-
-    <div style="margin-top:auto; margin-bottom: 40px; width: 89%;" fxLayout="column" fxLayoutAlign="ende center"
-        *ngIf="showBtnNext">
-        <button mat-raised-button class="colorBtn" style="width: 89%;" (click)="emitFinishToMobile()">Continuar</button>
     </div>
 </div>
