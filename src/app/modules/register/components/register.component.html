@@ -35,7 +35,7 @@
 
     <mat-label *ngIf="form.controls['password'].touched">Contraseña *</mat-label>
     <mat-form-field appearance="outline">
-      <input matInput [type]="password" placeholder="Contraseña *" formControlName="password" minlength="9" style="-webkit-text-security: square;"/>
+      <input matInput [type]="password" placeholder="Contraseña *" formControlName="password" minlength="9"/>
       <button matSuffix mat-icon-button (click)="changeView('password')">
         <mat-icon>visibility_off</mat-icon>
       </button>
