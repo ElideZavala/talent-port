@@ -1,5 +1,5 @@
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AnimationOptions } from 'ngx-lottie';
@@ -7,19 +7,26 @@ import { AnimationItem } from 'ngx-lottie/lib/symbols';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 import { SliderInterface } from 'src/app/shared/interfaces/slider.model';
 import { HttpErrorsService } from 'src/app/shared/services/http-errors.service';
+import Swiper from 'swiper';
 import { SliderService } from '../../services/slider.service';
 
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss']
+  styleUrls: ['./slider.component.scss'],
+
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements OnInit, AfterViewInit {
+
+
+
   @HostBinding('class') componentCssClass: any;
   showBtnNext: boolean = false;
   options: AnimationOptions[] = [];
   dataSlider!: SliderInterface[];
+  dataSlider2!: SliderInterface[];
+  positionSlider = 0;
 
   showPoints: boolean = true;
   constructor(
@@ -30,6 +37,28 @@ export class SliderComponent implements OnInit {
   ) {
 
   }
+  ngAfterViewInit(): void {
+    var mySwiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+
+    });
+
+    mySwiper.on('slideChange', function (item: any) {
+      // console.log(item);
+    });
+
+    let length = this.dataSlider.length;
+    let position = 0;
+
+    mySwiper.on('slideChange', function () {
+      if (mySwiper.realIndex == (length - 1)) {
+        console.log('Fin carrusel');
+        position = mySwiper.realIndex;
+        mySwiper.disable();
+      }
+    });
+  }
+
 
   ngOnInit(): void {
     this.getInfoSlider();
@@ -39,18 +68,18 @@ export class SliderComponent implements OnInit {
   }
 
   getInfoSlider(): void {
-    this.sliderService.getSlider()
-      .subscribe({
-        next: async (res) => {
-          if (res.status === 201) {
+    // this.sliderService.getSlider()
+    //   .subscribe({
+    //     next: async (res) => {
+    //       if (res.status === 201) {
 
-          }
-          if (res.status === 403) {
-            // 
-          }
-        },
-        error: err => this.httpErrorService.errorHttp(err)
-      });
+    //       }
+    //       if (res.status === 403) {
+    //         // 
+    //       }
+    //     },
+    //     error: err => this.httpErrorService.errorHttp(err)
+    //   });
 
     this.dataSlider = [
       {
@@ -81,8 +110,37 @@ export class SliderComponent implements OnInit {
         uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
     ];
+    this.dataSlider2 = [
+      {
+        targetNumber: 1,
+        image: "babyjason.json",
+        title: "¿Sabías que ...?",
+        paragraph1: "",
+        paragraph2: "Todos nacemos con 35 talentos y los utilizamos en nuestro día a día",
+        type: 1,
+        uri: "https://elidezavala.github.io/talent-port/assets/images/"
+      },
+      {
+        targetNumber: 2,
+        image: "work.json",
+        title: "¿Te gustaría ...?",
+        paragraph1: "- Mejorar profesionalmente\n- Encontrar el trabajo ideal para ti\n- Ser emprendedor\n- Saber que estudiar",
+        paragraph2: "Te ayudaremos a que esto sea posible conociendo tus talentos y conocer como se tienen que aplicar en tu día a día.",
+        type: 1,
+        uri: "https://elidezavala.github.io/talent-port/assets/images/"
+      },
+      {
+        targetNumber: 3,
+        image: "marketing.json",
+        title: "Te ayudaremos a",
+        paragraph1: "Conocer tus talentos dominantes y como poder aplicarlos para que logres:\n1. Establecer relaciones concretas con otras personas\n2. Resolver problemas\n3. Conocer que te motiva\n4. Saber que te hace resaltar de los demás",
+        paragraph2: "",
+        type: 1,
+        uri: "https://elidezavala.github.io/talent-port/assets/images/"
+      },
+    ];
 
-    console.log(this.dataSlider);
+    // console.log(this.dataSlider);
     this.dataSlider.forEach((element: any) => {
       element.paragraph1 = element.paragraph1.split("\n").join("<br />");
       element.paragraph2 = element.paragraph2.split("\n").join("<br />");
@@ -90,9 +148,10 @@ export class SliderComponent implements OnInit {
         path: 'https://elidezavala.github.io/talent-port/assets/images/' + element.image,
       })
     });
-    this.options.reverse();
+    
+    this.options;
 
-    console.log(this.options)
+    // console.log(this.options)
     //TEST 2
   }
 
@@ -122,12 +181,17 @@ export class SliderComponent implements OnInit {
       setTimeout(() => {
         this.showPoints = false;
         this.showBtnNext = true;
-        this.emitFinishToMobile();
-
+        console.log('Fin carrusel');
       }, 100)
     }
   }
-  emitFinishToMobile(): void {
-    console.log('Fin carrusel');
+
+  onSwiper(swiper: any) {
+    console.log(swiper);
   }
+  onSlideChange(item: any) {
+    console.log(item);
+  }
+
+
 }
