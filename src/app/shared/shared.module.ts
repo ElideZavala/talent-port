@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { SwiperModule } from 'swiper/angular';
 
 
 
@@ -16,7 +17,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SwiperModule
   ],
   exports: [
     MaterialModule,
@@ -24,7 +26,8 @@ import { DialogComponent } from './components/dialog/dialog.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    DialogComponent
+    DialogComponent,
+    SwiperModule
   ]
 })
 export class SharedModule { }
