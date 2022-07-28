@@ -1,0 +1,23 @@
+// *-*-*-*-*-*-*-*-*-*-*-* Colors *-*-*-*-*-*-*-*-*-*-*-*-*
+
+// Light Color Palette (Custom Properties)
+.light {
+	--color-primary: #FFFFFF;
+	--color-secondary: #774DA2;
+	--color-tertiary: #D1D0F6;
+	--color-quaternary: #777;
+	--color-quinary: #EC147D; 
+	--color-senary: #777;
+	--color-septenary: #E81968;
+}
+
+// Dark Color Palette (Custom Properties)
+.dark {
+	--color-primary: #231B23;
+	--color-secondary: #774DA2;
+	--color-tertiary:#000000 71 %;
+	--color-quaternary:#777;    ;
+	--color-quinary: #FFF;
+	--color-senary: #FFF;
+	--color-septenary: #E81968;
+}
