@@ -8,6 +8,33 @@
 :host {
   width: 100%;
   background-color: var(--color-primary);
+
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #774DA2;
+  }
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+   background: #fff;
+  }
+
+  ::ng-deep  .mat-slide-toggle-bar {
+    border-radius: 15px !important;
+    height: 29px !important;
+    width: 59px !important;
+    background-color: #fff;
+    border: 1px solid #DFDFE8;
+
+  }
+
+  ::ng-deep .mat-slide-toggle-thumb {
+    width: 30px !important;
+    height: 30px !important;
+    transform: translate(10%, 10%);
+  }
+
+  ::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb-container {
+    transform: translate3d(25px,0,0) !important;
+  }
+
 }
 .formContainer{
   margin: 25px;
