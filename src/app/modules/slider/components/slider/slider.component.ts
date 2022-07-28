@@ -95,8 +95,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
         paragraph1: "",
         paragraph2: "Todos nacemos con 35 talentos y los utilizamos en nuestro día a día",
         type: 1,
-        uri: './assets/images/'
-        // uri: "https://elidezavala.github.io/talent-port/assets/images/"
+        // uri: './assets/images/'
+        uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
       {
         targetNumber: 2,
@@ -105,9 +105,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
         paragraph1: "- Mejorar profesionalmente\n- Encontrar el trabajo ideal para ti\n- Ser emprendedor\n- Saber que estudiar",
         paragraph2: "Te ayudaremos a que esto sea posible conociendo tus talentos y conocer como se tienen que aplicar en tu día a día.",
         type: 1,
-        uri: './assets/images/'
+        // uri: './assets/images/'
 
-        // uri: "https://elidezavala.github.io/talent-port/assets/images/"
+        uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
       {
         targetNumber: 3,
@@ -116,9 +116,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
         paragraph1: "Conocer tus talentos dominantes y como poder aplicarlos para que logres:\n1. Establecer relaciones concretas con otras personas\n2. Resolver problemas\n3. Conocer que te motiva\n4. Saber que te hace resaltar de los demás",
         paragraph2: "",
         type: 1,
-        uri: './assets/images/'
+        // uri: './assets/images/'
 
-        // uri: "https://elidezavala.github.io/talent-port/assets/images/"
+        uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
     ];
 
@@ -127,9 +127,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
       element.paragraph1 = element.paragraph1.split("\n").join("<br />");
       element.paragraph2 = element.paragraph2.split("\n").join("<br />");
       this.options.push({
-        path: './assets/images/' + element.image,
+        // path: './assets/images/' + element.image,
 
-        // path: 'https://elidezavala.github.io/talent-port/assets/images/' + element.image,
+        path: 'https://elidezavala.github.io/talent-port/assets/images/' + element.image,
 
       })
     });
