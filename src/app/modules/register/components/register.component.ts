@@ -34,13 +34,7 @@ export class RegisterComponent implements OnInit {
   today = new Date();
   maxDateTo = this.today;
   ngOnInit(): void {
-    const consoleLog = {
-      status: true,
-      status2: false,
-      text: 'text'
-    }
-    console.log(consoleLog);
-    console.log('ya se completo el registro')
+
     const regexOnly9TextandNumberSimbols = this.validationsRegexService.regexOnly9TextandNumberSimbols;
     const regexPhoneNumber = this.validationsRegexService.regexPhoneNumber;
     const regexEmail = this.validationsRegexService.regexEmail;
@@ -69,11 +63,11 @@ export class RegisterComponent implements OnInit {
   submit(){
 
     this.dataForm = this.form.getRawValue();
-    // console.log(this.form.get('birthday')!.value);
-    // console.log(this.datePipe.transform(this.form.get('birthday')!.value, 'yyyy-MM-dd' )?.toString());
+
     this.dataForm.birthday = this.datePipe.transform(this.form.get('birthday')!.value, 'yyyy-MM-dd')?.toString();
-    // console.log(this.dataForm);
-    this.registerService.create(this.dataForm)
+    this.openDialogResult('Tu registro fue exitoso', 'checkmark-circle-outline.png', true );
+
+    /*this.registerService.create(this.dataForm)
     .subscribe({
       next: async (res) => {
         if (res.status === 201) {
@@ -86,7 +80,7 @@ export class RegisterComponent implements OnInit {
         }
       },
       error: err => this.httpErrorService.errorHttp(err)
-    });
+    });*/
   }
 
   openDialogResult(messageApi: string, image: string, buttonOk?: boolean, buttonBack?:  boolean,  errorMessage1?: string, errorMessage2?: string) {
@@ -105,7 +99,13 @@ export class RegisterComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      console.log('aca reporto a los nativos mobiles')
+      const consoleLog = {
+        status: true,
+        status2: false,
+        text: 'text'
+      }
+      console.log(consoleLog);
+      console.log('ya se completo el registro')
     }
     });
   }
