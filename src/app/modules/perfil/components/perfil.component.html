@@ -28,6 +28,12 @@
       <input matInput placeholder="Correo electrónico *" formControlName="email" />
     </mat-form-field>
 
+    <div fxLayout="row" fxLayoutAlign="space-between center" [style.margin-bottom.px]="75">
+      <div ><span class="modeDark">Modo obscuro</span></div>
+      <div><mat-slide-toggle labelPosition="before" ></mat-slide-toggle></div>
+    </div>
+
+
       <button mat-button class="button" cdkFocusInitial [disabled]="!form.valid" (click)="submit()">Continuar</button>
   </div>
 </div>
