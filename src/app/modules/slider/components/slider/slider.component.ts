@@ -18,17 +18,17 @@ import { SliderService } from '../../services/slider.service';
 
 })
 export class SliderComponent implements OnInit, AfterViewInit {
-
+  mySwiper1 = new Swiper('.swiper', {
+    direction: 'horizontal',
+  });
 
 
   @HostBinding('class') componentCssClass: any;
   showBtnNext: boolean = false;
   options: AnimationOptions[] = [];
   dataSlider!: SliderInterface[];
-  dataSlider2!: SliderInterface[];
   positionSlider = 0;
 
-  showPoints: boolean = true;
   constructor(
     private sliderService: SliderService,
     public overlayContainer: OverlayContainer,
@@ -40,12 +40,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     var mySwiper = new Swiper('.swiper', {
       direction: 'horizontal',
-
     });
 
-    mySwiper.on('slideChange', function (item: any) {
-      // console.log(item);
-    });
+    localStorage.setItem('index', (0).toString());
 
     let length = this.dataSlider.length;
     let position = 0;
@@ -56,6 +53,13 @@ export class SliderComponent implements OnInit, AfterViewInit {
         position = mySwiper.realIndex;
         mySwiper.disable();
       }
+    });
+
+    mySwiper.on('tap', function () {
+      setTimeout(() => {
+        let index = localStorage.getItem('index');
+        mySwiper.slideTo(Number(index), 500);
+      }, 500)
     });
   }
 
@@ -89,6 +93,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
         paragraph1: "",
         paragraph2: "Todos nacemos con 35 talentos y los utilizamos en nuestro día a día",
         type: 1,
+        // uri: './assets/images/'
         uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
       {
@@ -98,6 +103,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
         paragraph1: "- Mejorar profesionalmente\n- Encontrar el trabajo ideal para ti\n- Ser emprendedor\n- Saber que estudiar",
         paragraph2: "Te ayudaremos a que esto sea posible conociendo tus talentos y conocer como se tienen que aplicar en tu día a día.",
         type: 1,
+        // uri: './assets/images/'
+
         uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
       {
@@ -107,35 +114,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
         paragraph1: "Conocer tus talentos dominantes y como poder aplicarlos para que logres:\n1. Establecer relaciones concretas con otras personas\n2. Resolver problemas\n3. Conocer que te motiva\n4. Saber que te hace resaltar de los demás",
         paragraph2: "",
         type: 1,
-        uri: "https://elidezavala.github.io/talent-port/assets/images/"
-      },
-    ];
-    this.dataSlider2 = [
-      {
-        targetNumber: 1,
-        image: "babyjason.json",
-        title: "¿Sabías que ...?",
-        paragraph1: "",
-        paragraph2: "Todos nacemos con 35 talentos y los utilizamos en nuestro día a día",
-        type: 1,
-        uri: "https://elidezavala.github.io/talent-port/assets/images/"
-      },
-      {
-        targetNumber: 2,
-        image: "work.json",
-        title: "¿Te gustaría ...?",
-        paragraph1: "- Mejorar profesionalmente\n- Encontrar el trabajo ideal para ti\n- Ser emprendedor\n- Saber que estudiar",
-        paragraph2: "Te ayudaremos a que esto sea posible conociendo tus talentos y conocer como se tienen que aplicar en tu día a día.",
-        type: 1,
-        uri: "https://elidezavala.github.io/talent-port/assets/images/"
-      },
-      {
-        targetNumber: 3,
-        image: "marketing.json",
-        title: "Te ayudaremos a",
-        paragraph1: "Conocer tus talentos dominantes y como poder aplicarlos para que logres:\n1. Establecer relaciones concretas con otras personas\n2. Resolver problemas\n3. Conocer que te motiva\n4. Saber que te hace resaltar de los demás",
-        paragraph2: "",
-        type: 1,
+        // uri: './assets/images/'
+
         uri: "https://elidezavala.github.io/talent-port/assets/images/"
       },
     ];
@@ -145,10 +125,13 @@ export class SliderComponent implements OnInit, AfterViewInit {
       element.paragraph1 = element.paragraph1.split("\n").join("<br />");
       element.paragraph2 = element.paragraph2.split("\n").join("<br />");
       this.options.push({
+        // path: './assets/images/' + element.image,
+
         path: 'https://elidezavala.github.io/talent-port/assets/images/' + element.image,
+
       })
     });
-    
+
     this.options;
 
     // console.log(this.options)
@@ -176,22 +159,13 @@ export class SliderComponent implements OnInit, AfterViewInit {
     });
   }
 
-  hidePoints(opc: number): void {
-    if (this.dataSlider.length == opc) {
-      setTimeout(() => {
-        this.showPoints = false;
-        this.showBtnNext = true;
-        console.log('Fin carrusel');
-      }, 100)
-    }
+  public positionCircle(opc: number): void {
+
+    localStorage.setItem('index', (opc).toString());
   }
 
-  onSwiper(swiper: any) {
-    console.log(swiper);
-  }
-  onSlideChange(item: any) {
-    console.log(item);
-  }
+
+
 
 
 }
