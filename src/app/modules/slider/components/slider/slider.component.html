@@ -75,18 +75,20 @@
                     [innerHTML]="item.paragraph2"></span>
             </div>
 
-            <ol class="slide-indicador" *ngIf="i != (dataSlider.length - 1)" fxLayout="row" fxLayoutAlign="center center">
+            <div class="slide-indicador" *ngIf="i != (dataSlider.length - 1)" fxLayout="row"
+                fxLayoutAlign="center center">
                 <div fxLayout="row" fxLayoutAlign="center center">
-                    <li *ngFor="let item of dataSlider2; let i = index" fxLayout="row" fxLayoutAlign="center center">
-                        <label for="slide-{{item.targetNumber}}" (click)="hidePoints(item.targetNumber)" class="slide-circulo"
-                            fxLayout="row" fxLayoutAlign="center center">•</label>
-                    </li>
+                    <div *ngFor="let item of dataSlider; let indexTarget = index" fxLayout="row" fxLayoutAlign="center center">
+                        <div class="slide-circulo" fxLayout="row"
+                            fxLayoutAlign="center center">
+                            <div class="circle" (click)="positionCircle(indexTarget)">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </ol>
+            </div>
 
         </div>
     </div>
-
-
 
 </div>

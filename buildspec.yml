@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+  pre_build:
+    commands:
+      - npm install
+  build:
+    commands:
+      - node --max_old_space_size=3072 node_modules/@angular/cli/bin/ng build -c $APP_ENVIRONMENT --output-hashing=all --named-chunks
+artifacts:
+  files:
+    - '**/*'
+  name: 'dist'
+  base-directory: 'dist*'
