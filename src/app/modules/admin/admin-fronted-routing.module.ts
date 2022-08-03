@@ -5,7 +5,7 @@ import { InvitationCodeComponent } from './invitation-code/invitation-code.compo
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'invitation',
     component: InvitationCodeComponent
   },
   {
