@@ -1,0 +1,94 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  
+  &-form {
+    margin: 1rem;
+    position: relative;
+    padding: 0;
+    
+        &-inputs {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          // width: 50rem;
+          
+          &-input{
+            outline: none;
+            padding: .6rem 2rem;
+            border-radius: 8px;
+            width: 16rem;
+            letter-spacing: .5px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            // color: var(--color-senary);
+            color: #777;
+            }
+       }
+
+        &-button {
+          position: absolute;
+          left: 0;
+            display: inline-block;
+            outline: none;
+            padding: .6rem 1rem;
+            border-radius: 5px;
+            background-color: transparent;
+            // border: 2px solid var(--color-septenary);
+            border: 2px solid #E81968;
+            // color: var(--color-septenary);
+            color: #E81968;
+            font-weight: 600;
+            // width: 50%;
+            cursor: pointer;
+            transition: all .3s ease-in-out ;
+            left: 17rem;
+
+            &:hover,
+            &:active {
+                // background-color: var(--color-septenary);
+                background-color: #E81968;
+                color: #E6E6E6
+            }
+        }
+    }
+}
+
+
+//  2 Elements.
+// @import url('https://rsms.me/inter/inter.css');
+// @font-face {
+//   font-family: 'Inter';
+//   font-style: normal;
+//   src: url('https://rsms.me/inter/inter.css');
+// }
+.formContainer{
+  margin: 25px;
+}
+
+.mat-button{
+  cursor: default;
+  color: #fff !important;
+  border-radius: 10px;
+}
+
+
+.mat-button-disabled {
+  opacity: 0.5;
+}
+
+// input  {
+//     font-family: 'Inter';
+//     font-style: normal;
+//     font-weight: 400;
+//     font-size: 14px;
+//     line-height: 17px;
+//     color: #777777;
+// }
