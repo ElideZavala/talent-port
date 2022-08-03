@@ -2,8 +2,11 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { AppComponent } from 'src/app/app.component';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 import { PerfilInterface } from 'src/app/shared/interfaces/perfil.model';
+import { ConfigurationModeService } from 'src/app/shared/services/configuration-mode.service';
 import { HttpErrorsService } from 'src/app/shared/services/http-errors.service';
 import { ValidationsRegexService } from 'src/app/shared/services/validations-regex.service';
 import { PerfilService } from '../services/perfil.service';
@@ -23,10 +26,14 @@ export class PerfilComponent implements OnInit {
     private datePipe: DatePipe,
     private perfilService: PerfilService,
     private httpErrorService: HttpErrorsService,
-    public dialog: MatDialog,) { }
+    public dialog: MatDialog,
+    private configurationModeService: ConfigurationModeService, public appComponent: AppComponent) { }
   today = new Date();
   maxDateTo = this.today;
+  mode: string | undefined;
   ngOnInit(): void {
+    this.mode = this.configurationModeService.getMode();
+    console.log(this.mode);
     const regexOnly9TextandNumberSimbols = this.validationsRegexService.regexOnly9TextandNumberSimbols;
     const regexPhoneNumber = this.validationsRegexService.regexPhoneNumber;
     const regexEmail = this.validationsRegexService.regexEmail;
@@ -35,8 +42,8 @@ export class PerfilComponent implements OnInit {
       phone: ['+52', [Validators.required, Validators.pattern(regexPhoneNumber)]],
       email: ['', [Validators.required, Validators.pattern(regexEmail)]],
       birthday: ['', Validators.required],
+      mode: [this.mode === 'light' ? false : true],
     });
-
   }
 
   submit(){
@@ -78,6 +85,14 @@ export class PerfilComponent implements OnInit {
       console.log('aca reporto a los nativos mobiles')
     }
     });
+  }
+
+  changeMode(event: MatSlideToggleChange){
+    // console.log(event.checked);
+    this.mode = event.checked ? 'dark' : 'light';
+    localStorage.setItem('mode', this.mode);
+    this.appComponent.mode = this.mode;
+    console.log(this.mode);
   }
 
 }

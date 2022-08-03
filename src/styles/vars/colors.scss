@@ -5,9 +5,13 @@
 	--color-secondary: #774DA2;
 	--color-tertiary: #D1D0F6;
 	--color-quaternary: #777;
-	--color-quinary: #EC147D; 
+	--color-quinary: #EC147D;
 	--color-senary: #777;
 	--color-septenary: #E81968;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-primary);
 }
 
 // Dark Color Palette (Custom Properties)
@@ -19,4 +23,8 @@
 	--color-quinary: #FFF;
 	--color-senary: #FFF;
 	--color-septenary: #E81968;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-primary);
 }
