@@ -1,0 +1,42 @@
+<main class="main">
+    <form class="main-form" [formGroup]="form">
+        <div class="main-form-inputs"> 
+
+            <!-- Apelllidos -->
+            <label *ngIf="form.controls['lastName'].touched ">Apellido</label>
+            <mat-form-field appearance="outline" class="main-form-inputs-input">
+                <input matInput placeholder="Apellido *" formControlName="lastName" />
+            </mat-form-field>
+
+            <!-- Fecha de Nacimiento -->
+            <mat-label *ngIf="form.controls['birthday'].touched && form.controls['birthday'].valid">
+                Fecha de nacimiento *
+            </mat-label>
+            <mat-form-field class="example-full-width" appearance="outline" class="main-form-inputs-input">
+                <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento *" formControlName="birthday"
+                    [max]="maxDateTo" [disabled]="true">
+                <mat-hint>DD/MM/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker disabled="false" startView="year">
+                    <mat-date-range-picker-actions>
+                        <button style="background: #774DA2; color:#fff;" mat-raised-button matDateRangePickerApply>Aceptar</button>
+                    </mat-date-range-picker-actions>
+                </mat-datepicker>
+            </mat-form-field>
+
+            <!-- Número de Celular -->
+            <mat-form-field appearance="outline" class="main-form-inputs-input">
+                <input matInput placeholder="Número de celular *" formControlName="phone" />
+                <mat-hint>Ejemplo: +529999999999</mat-hint>
+            </mat-form-field>
+
+            <!-- Correo electrónico -->
+           <mat-label *ngIf="form.controls['email'].touched">Correo electrónico *</mat-label>
+            <mat-form-field appearance="outline" class="main-form-inputs-input">
+                <input matInput placeholder="Correo electrónico *" formControlName="email" />
+            </mat-form-field>
+        </div>
+        <button class="main-form-button" type="submit" cdkFocusInitial [disabled]="!form.valid" (click)="submit()">Guardar</button>
+
+    </form>
+  </main>
