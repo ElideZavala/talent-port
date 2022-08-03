@@ -72,7 +72,7 @@ export class AccountEditComponent implements OnInit {
         text: 'text'
       }
       console.log(consoleLog);
-      console.log('ya se completo el registro')
+      console.log('Actualización de datos exitoso')
     }
     });
   }
@@ -103,7 +103,7 @@ export class AccountEditComponent implements OnInit {
   template: `
     <div class="example-header">
       <button mat-icon-button (click)="previousClicked('month')">
-        <!-- <mat-icon>keyboard_arrow_left</mat-icon> -->
+        <!-- <mat-icon>keyboard_arrow_left</mat-icon> --> 
       </button>
       <span class="example-header-label" (click)="currentPeriodClicked()">{{periodLabel}}</span>
       <button mat-icon-button (click)="nextClicked('month')">
