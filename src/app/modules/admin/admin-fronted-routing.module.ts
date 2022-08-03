@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountEditComponent } from './account-edit/account-edit.component';
+import { AccountEditComponent } from './account-edit/components/account-edit.component';
 import { InvitationCodeComponent } from './invitation-code/invitation-code.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'invitation',
     component: InvitationCodeComponent
   },
   {
