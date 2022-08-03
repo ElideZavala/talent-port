@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -27,7 +27,7 @@ export class PerfilComponent implements OnInit {
     private perfilService: PerfilService,
     private httpErrorService: HttpErrorsService,
     public dialog: MatDialog,
-    private configurationModeService: ConfigurationModeService, public appComponent: AppComponent) { }
+    private configurationModeService: ConfigurationModeService, public appComponent: AppComponent,private renderer: Renderer2) { }
   today = new Date();
   maxDateTo = this.today;
   mode: string | undefined;
@@ -92,7 +92,15 @@ export class PerfilComponent implements OnInit {
     this.mode = event.checked ? 'dark' : 'light';
     localStorage.setItem('mode', this.mode);
     this.appComponent.mode = this.mode;
+    this.renderer.removeClass(document.body, this.mode === 'dark' ? 'light' : 'dark');
+    // this.renderer.removeClass(document.body, 'light');
+    this.renderer.addClass(document.body, this.mode)
     console.log(this.mode);
+  }
+
+  change(){
+    console.log('chage');
+    // his.namebutton.nativeElement.classList.add('class-to-add')
   }
 
 }

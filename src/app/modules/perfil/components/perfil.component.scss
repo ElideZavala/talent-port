@@ -45,6 +45,10 @@
     color: var(--color-senary) !important;
   }
 
+  ::ng-deep .mat-button-wrapper {
+    color: var(--color-senary) !important;
+  }
+
 }
 .formContainer{
   margin: 25px;
