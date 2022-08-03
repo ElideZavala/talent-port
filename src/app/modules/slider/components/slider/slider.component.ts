@@ -6,6 +6,7 @@ import { AnimationOptions } from 'ngx-lottie';
 import { AnimationItem } from 'ngx-lottie/lib/symbols';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 import { SliderInterface } from 'src/app/shared/interfaces/slider.model';
+import { ConfigurationModeService } from 'src/app/shared/services/configuration-mode.service';
 import { HttpErrorsService } from 'src/app/shared/services/http-errors.service';
 import Swiper from 'swiper';
 import { SliderService } from '../../services/slider.service';
@@ -28,12 +29,14 @@ export class SliderComponent implements OnInit, AfterViewInit {
   options: AnimationOptions[] = [];
   dataSlider!: SliderInterface[];
   positionSlider = 0;
+  mode: string | undefined;
 
   constructor(
     private sliderService: SliderService,
     public overlayContainer: OverlayContainer,
     private dialog: MatDialog,
     private httpErrorService: HttpErrorsService,
+    private configurationModeService: ConfigurationModeService,
   ) {
 
   }
@@ -49,7 +52,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
     mySwiper.on('slideChange', function () {
       if (mySwiper.realIndex == (length - 1)) {
-        console.log('Fin carrusel');
+        console.log('Success');
         position = mySwiper.realIndex;
         mySwiper.disable();
       }
@@ -65,6 +68,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+    this.mode = this.configurationModeService.getMode();
     this.getInfoSlider();
   }
 
