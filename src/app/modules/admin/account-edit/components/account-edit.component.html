@@ -3,20 +3,20 @@
         <div class="main-form-inputs"> 
 
             <!-- Apelllidos -->
-            <label *ngIf="form.controls['lastName'].touched ">Apellido</label>
+            <label *ngIf="form.controls['lastName'].touched" class="label">Apellido</label>
             <mat-form-field appearance="outline" class="main-form-inputs-input">
                 <input matInput placeholder="Apellido *" formControlName="lastName" />
             </mat-form-field>
 
             <!-- Fecha de Nacimiento -->
-            <mat-label *ngIf="form.controls['birthday'].touched && form.controls['birthday'].valid">
+            <mat-label *ngIf="form.controls['birthday'].touched && form.controls['birthday'].valid"  class="label">
                 Fecha de nacimiento *
             </mat-label>
             <mat-form-field class="example-full-width" appearance="outline" class="main-form-inputs-input">
                 <input matInput [matDatepicker]="picker" placeholder="Fecha de Nacimiento *" formControlName="birthday"
-                    [max]="maxDateTo" [disabled]="true">
+                    [max]="maxDateTo" [disabled]="true"  class="label">
                 <mat-hint>DD/MM/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix [for]="picker"  class="calendar"></mat-datepicker-toggle>
                 <mat-datepicker touchUi #picker disabled="false" startView="year">
                     <mat-date-range-picker-actions>
                         <button style="background: #774DA2; color:#fff;" mat-raised-button matDateRangePickerApply>Aceptar</button>
@@ -31,7 +31,7 @@
             </mat-form-field>
 
             <!-- Correo electrónico -->
-           <mat-label *ngIf="form.controls['email'].touched">Correo electrónico *</mat-label>
+           <mat-label *ngIf="form.controls['email'].touched" class="label">Correo electrónico *</mat-label>
             <mat-form-field appearance="outline" class="main-form-inputs-input">
                 <input matInput placeholder="Correo electrónico *" formControlName="email" />
             </mat-form-field>

@@ -68,11 +68,19 @@ export class AccountEditComponent implements OnInit {
     if (result) {
       const consoleLog = {
         status: true,
-        status2: false,
-        text: 'text'
-      }
+        msg: 'Success'
+      } 
       console.log(consoleLog);
       console.log('Actualización de datos exitoso')
+    } 
+
+    if (!result) {
+      const consoleLog = {
+        status: false,
+        msg: 'Error'
+      } 
+      console.log(consoleLog);
+      console.log('Error al actualizar los datos')
     }
     });
   }

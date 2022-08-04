@@ -26,8 +26,12 @@
           letter-spacing: .5px;
           font-weight: 400;
           font-size: 14px;
-          // color: var(--color-senary);
-          color: #777;
+          color: var(--color-senary);
+
+            ::placeholder{
+              color: var(--color-senary);
+              background-color: transparent;
+            }
           }
        }
 
@@ -39,21 +43,42 @@
           padding: .6rem 1rem;
           border-radius: 5px;
           background-color: transparent;
-          // border: 2px solid var(--color-septenary);
-          border: 2px solid #E81968;
-          // color: var(--color-septenary);
-          color: #E81968;
+          border: 2px solid var(--color-septenary);
+          color: var(--color-septenary);
           font-weight: 600;
-          // width: 50%;
           cursor: pointer;
           transition: all .3s ease-in-out ;
 
           &:hover,
           &:active {
-              // background-color: var(--color-septenary);
-              background-color: #E81968;
-              color: #E6E6E6
+              background-color: var(--color-septenary);
+              color: var(--color-octonary)
           }
-        }
+        
     }
+  }
+}
+
+.label {
+  color: var(--color-novenary);
+}
+
+::ng-deep  .mat-form-field-outline  {
+  outline: .5px solid var(--color-unique);
+  border-radius: 6px;
+  box-shadow: 0 0 5px var(--color-unique);
+  z-index: 20;
+
+  &:active,
+  &:hover {
+    outline: none;
+  }
+}
+
+mat-hint {
+  color: var(--color-novenary);
+}
+
+.calendar {
+  color: var(--color-novenary);
 }
