@@ -42,11 +42,11 @@
   }
 
   ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
-    color: var(--color-senary) !important;
+    color: var(--color-senary);
   }
 
   ::ng-deep .mat-button-wrapper {
-    color: var(--color-senary) !important;
+    color: var(--color-senary);
   }
 
 }
@@ -56,7 +56,7 @@
 
 .button {
   background: var(--color-secondary);
-  color: #FFF;
+  color: #FFF ;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;

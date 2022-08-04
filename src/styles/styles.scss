@@ -23,6 +23,9 @@ body {
     padding: 0;
 }
 
+.mat-dialog-container{
+  background-color: var(--color-primary);
+}
 .mat-dialog-content {
   display: contents !important;
   margin: 0px !important;
