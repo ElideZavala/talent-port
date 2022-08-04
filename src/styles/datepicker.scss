@@ -2,6 +2,7 @@ mat-datepicker-content {
   border-top-right-radius: 15px !important;
   border-top-left-radius: 15px !important;
   background-color: var(--color-primary) !important;
+  // overflow-y: auto !important;
 }
 .mat-calendar-table-header-divider ::after {
 
@@ -21,11 +22,13 @@ mat-datepicker-content {
   background:  var(--color-table-picker) !important;// #F8F8F8;
   padding: 0px 0px 0px 0px !important;
   color: var(--color-primary);
+  margin-bottom: .5rem;
 }
 
 .mat-datepicker-actions{
   justify-content: center !important;
   align-items: center !important;
+  padding: 0 8px 85px 8px !important;
 
 }
 .mat-calendar-body{
