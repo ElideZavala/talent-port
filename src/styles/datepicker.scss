@@ -40,7 +40,7 @@ mat-datepicker-content {
 
 .mat-calendar-table-header {
   // background: #EBEBEB;
-  background: var(--color-primary);
+  background: var(--color-header-picke);
   color: var(--color-theme);
   padding: 10px;
 }
@@ -51,7 +51,7 @@ mat-datepicker-content {
   align-items: center;
   padding: 0.5em;
   background: var(--color-secondary);
-  color: var(--color-theme);
+  color: #fff;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
@@ -69,6 +69,7 @@ mat-datepicker-content {
 
 .mat-calendar-table-header th {
   padding: 10px 0px 0px 0px !important;
+  background-color: var( --color-header-picker);
 }
 
 .buttonAceptCalendar {

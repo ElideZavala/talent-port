@@ -37,9 +37,9 @@
 
   ::placeholder { color: var(--color-senary); }
 
-  // ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  //   border: 1px solid var(--color-senary) !important;
-  // }
+  mat-hint {
+    color: var(--color-senary);
+  }
 
   ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
     color: var(--color-senary) !important;
@@ -56,7 +56,7 @@
 
 .button {
   background: var(--color-secondary);
-  color: var(--color-primary);
+  color: #FFF;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
@@ -70,21 +70,26 @@
 
 .mat-button{
   cursor: default;
-  color: var(--color-senary) !important;
+  color: #FFF !important;
   border-radius: 10px;
 }
 
 
 .mat-button-disabled {
   opacity: 0.5;
+  color: #FFF !important;
 }
 
-input  {
+input {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  color: var(--color-senary);
+}
+
+.input {
   color: var(--color-senary);
 }
 
