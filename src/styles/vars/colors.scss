@@ -22,6 +22,8 @@
 	margin: 0;
 	padding: 0;
 	background-color: var(--color-primary);
+	--color-code-invitation-title:#3B4559;
+	--color-code-invitation-description:#3B4559;
 }
 
 // Dark Color Palette (Custom Properties)
@@ -48,4 +50,6 @@
 	margin: 0;
 	padding: 0;
 	background-color: var(--color-primary);
+	--color-code-invitation-title:#ffffff;
+	--color-code-invitation-description:#ffffff;
 }

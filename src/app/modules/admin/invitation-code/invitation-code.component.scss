@@ -4,15 +4,15 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    color: #3B4559;
+    color: var(--color-code-invitation-title);
 }
 
 .descripcion {
+    color: var(--color-code-invitation-description);
     font-family: 'Inter';
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
-    color: #3B4559;
 }
 
 .icon-chat {
