@@ -12,14 +12,18 @@
 	--color-novenary: #777777;
 	--color-tenth: #000000;
 	--color-eleventh: #774DA2;
-	--color-code-invitation-title:#3B4559;
-	--color-code-invitation-description:#3B4559;
+	--color-theme: #000;
+	--color-table-picker: #F8F8F8;
+	--color-header-picker: #EBEBEB;
+	--color-button-septenary: #E81968;
 	--color-theme: #000;
 	--color-table-picker: #423F3F;
 	height: 100%;
 	margin: 0;
 	padding: 0;
 	background-color: var(--color-primary);
+	--color-code-invitation-title:#3B4559;
+	--color-code-invitation-description:#3B4559;
 }
 
 // Dark Color Palette (Custom Properties)
@@ -35,12 +39,17 @@
 	--color-novenary: #DEDEDE;
 	--color-tenth: #FFFFFF;
 	--color-eleventh: #ffffff;
-	--color-code-invitation-title:#ffffff;
-	--color-code-invitation-description:#ffffff;
 	--color-theme: #FFF;
 	--color-table-picker: #423F3F;
+	--color-header-picker: #231B23;
+	--color-button-septenary: #B3B3B3;
+	--color-theme: #FFF;
+	--color-table-picker: #423F3F;
+	--color-unique: #B7B7B7;
 	height: 100%;
 	margin: 0;
 	padding: 0;
 	background-color: var(--color-primary);
+	--color-code-invitation-title:#ffffff;
+	--color-code-invitation-description:#ffffff;
 }
