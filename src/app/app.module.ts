@@ -12,7 +12,7 @@ import { HttpRequestInterceptor } from './shared/HttpRequestInterceptor';
 registerLocaleData(localeEs, 'es-MX');
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
