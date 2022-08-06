@@ -1,6 +1,6 @@
 .main {
+  margin-top: 1rem;
   display: flex;
-  align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
@@ -8,7 +8,7 @@
   font-family: 'Inter', sans-serif;
   
   &-form {
-    margin: 1rem;
+    margin: .5rem;
     padding: 0;
     position: relative;
     
@@ -20,9 +20,8 @@
       
       &-input{
           outline: none;
-          padding: .6rem 2rem;
           border-radius: 8px;
-          width: 16rem;
+          width: 95vw;
           letter-spacing: .5px;
           font-weight: 400;
           font-size: 14px;
@@ -37,7 +36,6 @@
 
         &-button {
           position: absolute;
-          left: 2rem;
           display: inline-block;
           outline: none;
           padding: .6rem 1rem;
@@ -54,7 +52,6 @@
               background-color: var(--color-septenary);
               color: var(--color-octonary)
           }
-        
     }
   }
 }

@@ -7,6 +7,7 @@ import { AdminRoutingModule } from './admin-fronted-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExampleHeader } from './account-edit/components/account-edit.component'
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PasswordChangeComponent } from './account-edit/password-change/components/password-change.component';
 
 
 
@@ -14,7 +15,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [
     InvitationCodeComponent,
     AccountEditComponent,
-    ExampleHeader
+    ExampleHeader,
+    PasswordChangeComponent
   ],
   imports: [
     CommonModule,
